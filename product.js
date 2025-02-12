@@ -2,21 +2,21 @@
 // element.insertAdjacentHTML('beforebegin/afterbegin/beforeend/afterend','html') // html 값을 특정위치에 삽입
 // *특정위치* -> beforebegin<div>afterbegin   ~내용~    beforeend</div>afterend
 let productData = JSON.parse(localStorage.getItem('productData'));
-console.log(localStorage.getItem('productData'));
+// console.log(localStorage.getItem('productData'));
 
 // 상품갯수만큼 반복생성
 productData.forEach(function (product) {
 
-  let str = `<div class="col-lg-3 col-md-4 col-sm-6 mix ${product.type}">
+  let str = `<div class="col-lg-3 col-md-4 col-sm-6 mix ${product.type} ${product.prodCode}">
                     <div class="product__item ${product.sale<=0?'':`sale`}" >
                         <div class="product__item__pic set-bg" style="background-image : url(${product.image})">
                         ${product.new==0 ?'':`<div class="label new">New</div>`}
                         ${product.sale<=0?'':`<div class="label sale">-${[product.sale]}% Sale</div>`}       
                         <ul class="product__hover">
-                        <li><a href="product-details.html" class="image-popup"><span
+                        <li><a href="product-details.html" class="image-popup" id=" ${product.prodCode}"><span
                                             class="arrow_expand"></span></a></li>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt" id="${product.prodCode}"></span></a></li>
+                                <li><a><span class="icon_bag_alt" id="${product.prodCode}"></span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -37,20 +37,20 @@ productData.forEach(function (product) {
 }); // end of forEach
 
 
-document.querySelectorAll('.filter__controls li').forEach(item => {
-    item.addEventListener('click', function(e){
-        // console.log(item.getAttribute('data-filter'))
-        let cat = item.getAttribute('data-filter');
-        document.querySelectorAll('.property__gallery>div').forEach(pitem => {
-            console.log('==>',  pitem.querySelector('div'))
-            pitem.querySelector('div').style.display = 'block';
-            console.log(pitem.classList.contains(cat), cat)
-            if(pitem.classList.contains(cat) || cat == "*") {
-                // div.style.display = '';
-            } else {
-                pitem.style.display = 'none';
-            }
-        })
-    })
+// document.querySelectorAll('.filter__controls li').forEach(item => {
+//     item.addEventListener('click', function(e){
+//         // console.log(item.getAttribute('data-filter'))
+//         let cat = item.getAttribute('data-filter');
+//         document.querySelectorAll('.property__gallery>div').forEach(pitem => {
+//             console.log('==>',  pitem.querySelector('div'))
+//             pitem.querySelector('div').style.display = 'block';
+//             console.log(pitem.classList.contains(cat), cat)
+//             if(pitem.classList.contains(cat) || cat == "*") {
+//                 // div.style.display = '';
+//             } else {
+//                 pitem.style.display = 'none';
+//             }
+//         })
+//     })
    
-})
+// })
