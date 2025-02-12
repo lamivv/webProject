@@ -1,6 +1,6 @@
 let cartData = [];
 cartData = JSON.parse(localStorage.getItem('cartData'));
-console.log(cartData);
+// console.log(cartData);
 productData = [];
 productData = JSON.parse(localStorage.getItem('productData'));
 
@@ -25,9 +25,6 @@ document.querySelectorAll("span.icon_bag_alt").forEach(item =>{
         console.log(cartData);
         localStorage.setItem('cartData',JSON.stringify(cartData));
       }
-      // if(get.prodCode== item.id){
-      //   cartData.push({id:'user01',prodCode, prodName, price, likeIt, image, sale, qyt: 1});
-      // }
     })
 })
 })

@@ -1306,6 +1306,13 @@ ol {
 	margin-left: 4px;
 }
 
+.shop-cart-sale {
+	font-size: 14px;
+	color: #b1b0b0;
+	text-decoration: line-through;
+	margin-left: 4px;
+}
+
 /*---------------------
   Shop
 -----------------------*/
