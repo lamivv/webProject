@@ -324,6 +324,7 @@ ol {
 
 .header__logo {
 	padding: 26px 0;
+	text-align: center;
 }
 
 .header__logo a {
@@ -424,7 +425,7 @@ ol {
 
 .header__right {
 	text-align: right;
-	padding: 30px 0 27px;
+	padding: 0px 0 20px;
 }
 
 .header__right__auth {
