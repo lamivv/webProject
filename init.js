@@ -11,8 +11,8 @@ const productData = [
   {prodCode: 'P007', prodName: 'Contrasting sunglasses', type : 'women', price: 45000, likeIt: 5, image:'img/product/product-7.jpg', sale: 0, new: 1},
   {prodCode: 'P008', prodName: 'Water resistant backpack', type : 'men', price: 36000, likeIt: 5, image:'img/product/product-8.jpg', sale: 0, new: 0}
 ]
-const memberData = [ 
-  {name: '비회원', id: 'user00', pw: '0000', responsibility: 'User'},
+const memberData = [ // 회원가입한 명단
+  {name: '비회원', id: '비회원', pw: '비회원', responsibility: 'User'},
   {name: '김땅콩', id: 'user01', pw: '1111', responsibility: 'Admin'},
   {name: '김치즈', id: 'user02', pw: '1111', responsibility: 'User'},
   {name: '정망고', id: 'user03', pw: '1111', responsibility: 'User'}
@@ -22,5 +22,5 @@ const cartData = [
  {id:'user01', prodCode: 'P002', prodName: 'Flowy striped skirt', price: 40000, likeIt: 5, image:'img/product/product-2.jpg', sale: 15, qyt: 2}
 ]
 const loginData = [ // 현재 로그인 정보
-  {name: '비회원', id: 'user00', pw: '0000', responsibility: 'User'}
+  {name: '비회원', id: '비회원', pw: '비회원', responsibility: 'User'}
 ]

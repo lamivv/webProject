@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <title>Ashion | 회원가입</title>
+  <!-- <link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.png" /> -->
+  <link rel="stylesheet" href="assets/css/styles.min.css" />
 </head>
 
 <body>
@@ -27,21 +27,24 @@
                 <form>
                   <div class="mb-3">
                     <label for="exampleInputtext1" class="form-label">이름</label>
-                    <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                    <input type="text" class="form-control user_name" id="exampleInputtext1"
+                      aria-describedby="textHelp">
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">아이디</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" class="form-control user_id" id="exampleInputEmail1"
+                      aria-describedby="emailHelp">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control user_pw" id="exampleInputPassword1">
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">비밀번호 확인</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="exampleInputPassword" class="form-label">비밀번호 확인</label>
+                    <input type="password" class="form-control user_pw_check" id="exampleInputPassword2">
                   </div>
-                  <a href="main.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">회원가입</a>
+                  <a class="register-btn btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">회원가입</a>
+                  <!-- <a href="main.html" class="register-btn btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">회원가입</a> -->
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">이미 계정이 있으신가요?</p>
                     <a class="text-primary fw-bold ms-2" href="login.html">로그인하기</a>
@@ -54,8 +57,54 @@
       </div>
     </div>
   </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script> -->
+  <!-- <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+  <script>
+    // 기존 회원명단
+    let memberData = [];
+    memberData = JSON.parse(localStorage.getItem('memberData'));
+    // console.log(memberData);
+
+    // 회원가입
+    document.querySelector('.register-btn').addEventListener('click', function (e) {
+      let check = 0; // 정상입력된 자료인지 체크 여부. 0 = 정상, 1 = 비정상(다시입력)
+      let name = document.querySelector('input.user_name').value;
+      let id = document.querySelector('input.user_id').value;
+      let pw = document.querySelector('input.user_pw').value;
+      let pw_check = document.querySelector('input.user_pw_check').value;
+      // 입력되지 않은 값이 있는지 체크
+      if (name == "" || id == "" || pw == "" || pw_check == "") {
+        alert("회원가입에 필요한 모든 항목을 입력해주세요");
+        check = 1; // 회원가입 불가(필수항목 미기재)
+      } else {
+        console.log('회원가입에 필요한 모든 항목을 기입했습니다');
+      }
+
+      // 중복된 아이디가 있는지 체크
+      for (let i = 0; i < memberData.length; i++) {
+        if (id != "" && id == memberData[i].id) { // 입력한 값이 데이터와 중복된다면
+          console.log('이미 동일한 아이디가 존재합니다.')
+          check = 1; // 회원가입 불가(동일한 아이디 존재함)
+        }
+      } // end of for
+
+      // 비밀번호와 비밀번호확인 값이 같은지 확인
+      if (pw == pw_check && pw != "" && pw_check != "") {
+        console.log('비밀번호가 동일합니다');
+      } else if (pw != pw_check && pw != "" && pw_check != ""){
+        alert('비밀번호가 일치하지 않습니다');
+        check = 1; // 회원가입 불가(비밀번호와 비밀번호확인이 일치하지않음)
+      }
+
+      // 모두 정상적으로 입력되었으면 (check==0) 데이터베이스에 등록
+      if (check == 0) {
+        memberData.push({name: name, id:id, pw: pw, responsibility: 'User'});
+        localStorage.setItem('memberData',JSON.stringify(memberData)); //json문자열로 변환해서 저장
+        alert('회원가입이 완료되었습니다\n홈페이지로 이동합니다');
+        location.href = "main.html"; 
+      }
+    })
+  </script>
 </body>
 
 </html>
