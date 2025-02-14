@@ -18,9 +18,14 @@ const memberData = [ // 회원가입한 명단
   {name: '정망고', id: 'user03', pw: '1111', responsibility: 'User'}
 ]
 const cartData = [
- {id:'user01', prodCode: 'P001', prodName: 'Buttons tweed blazer', price: 35000, likeIt: 5, image:'img/product/product-1.jpg', sale: 0, qyt: 1},
- {id:'user01', prodCode: 'P002', prodName: 'Flowy striped skirt', price: 40000, likeIt: 5, image:'img/product/product-2.jpg', sale: 15, qyt: 2}
+ {id:'비회원', prodCode: 'P008', prodName: 'Water resistant backpack', price: 36000, likeIt: 5, image:'img/product/product-8.jpg', sale: 0, qyt: 1},
+ {id:'비회원', prodCode: 'P001', prodName: 'Buttons tweed blazer', price: 35000, likeIt: 5, image:'img/product/product-1.jpg', sale: 0, qyt: 1},
+ {id:'user01', prodCode: 'P002', prodName: 'Flowy striped skirt', price: 40000, likeIt: 5, image:'img/product/product-2.jpg', sale: 15, qyt: 2},
+ {id:'user02', prodCode: 'P003', prodName: 'Cotton T-Shirt', price: 30000, likeIt: 5, image:'img/product/product-3.jpg', sale: 15, qyt: 1}
 ]
+
 const loginData = [ // 현재 로그인 정보
   {name: '비회원', id: '비회원', pw: '비회원', responsibility: 'User'}
 ]
+
+const searchCode = 0; 

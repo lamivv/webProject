@@ -4,6 +4,10 @@ cartData = JSON.parse(localStorage.getItem('cartData'));
 productData = [];
 productData = JSON.parse(localStorage.getItem('productData'));
 
+// // 현재 로그인명단
+// let loginData = [];
+// loginData = JSON.parse(localStorage.getItem('loginData'));
+
 // 장바구니 추가
 document.querySelectorAll("span.icon_bag_alt").forEach(item => {
   item.addEventListener('click', function (e) {
@@ -11,9 +15,9 @@ document.querySelectorAll("span.icon_bag_alt").forEach(item => {
     // 담은 상품코드와 동일한 것을 productData에서 불러와서 담아주기
     productData.forEach(get => {
       let Exist = 1; // 장바구니에 동일한 상품이 이미 있다면 0, 없다면 1
-      if (get.prodCode == item.id) { // 장바구니에 담으려는 상품의 코드와 제품의 코드가 동일하면
+      if (get.prodCode == item.id ) { // 장바구니에 담으려는 상품의 코드와 제품의 코드가 동일하면
         for (let i = 0; i < cartData.length; i++) { // 이미 장바구니에 있는지 확인을 위해서 루프를 하고
-          if (cartData[i]!= null && cartData[i].prodCode == item.id) { // 이미 장바구니에 있는 상품이라면
+          if (cartData[i]!= null && cartData[i].prodCode == item.id && cartData[i].id==loginData[0].id) { // 이미 장바구니에 있는 상품이라면
             cartData[i].qyt = cartData[i].qyt +1 ;
             alert('\n이미 장바구니에 추가된 상품입니다. \n\n수량이 추가되었습니다');
             Exist = 0 ; // 존재여부를 반환
@@ -21,7 +25,7 @@ document.querySelectorAll("span.icon_bag_alt").forEach(item => {
           }
         } // end of for
         if (Exist == 1){
-          let id = 'user01';
+          let id = loginData[0].id;
           let prodCode = get.prodCode;
           let prodName = get.prodName;
           let price = get.price;
@@ -53,7 +57,7 @@ document.querySelectorAll("span.icon_bag_alt").forEach(item => {
 // 장바구니에 담겨져 있는 상품종류의 갯수 (배열중 삭제된 null값은 제외)
 let cartnum = 0;
 for (let i = 0; i < cartData.length; i++) {
-  if (cartData[i] != null) {
+  if (cartData[i] != null && cartData[i].id==loginData[0].id)  {
     cartnum++;
   }
 }

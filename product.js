@@ -13,8 +13,8 @@ productData.forEach(function (product) {
                         ${product.new==0 ?'':`<div class="label new">New</div>`}
                         ${product.sale<=0?'':`<div class="label sale">-${[product.sale]}% Sale</div>`}       
                         <ul class="product__hover">
-                        <li><a href="product-details.html" class="image-popup" id=" ${product.prodCode}"><span
-                                            class="arrow_expand"></span></a></li>
+                        <li><a href="product-details.html" class="image-popup" id="${product.prodCode}"><span
+                                            class="icon_detailes arrow_expand" id="${product.prodCode}"></span></a></li>
                                 <li><a href="#"><span class="icon_heart_alt" id="${product.prodCode}"></span></a></li>
                                 <li><a><span class="icon_bag_alt" id="${product.prodCode}"></span></a></li>
                             </ul>
@@ -35,22 +35,3 @@ productData.forEach(function (product) {
   let target = document.querySelector('div.property__gallery'); 
   target.insertAdjacentHTML('beforeend', str);
 }); // end of forEach
-
-
-// document.querySelectorAll('.filter__controls li').forEach(item => {
-//     item.addEventListener('click', function(e){
-//         // console.log(item.getAttribute('data-filter'))
-//         let cat = item.getAttribute('data-filter');
-//         document.querySelectorAll('.property__gallery>div').forEach(pitem => {
-//             console.log('==>',  pitem.querySelector('div'))
-//             pitem.querySelector('div').style.display = 'block';
-//             console.log(pitem.classList.contains(cat), cat)
-//             if(pitem.classList.contains(cat) || cat == "*") {
-//                 // div.style.display = '';
-//             } else {
-//                 pitem.style.display = 'none';
-//             }
-//         })
-//     })
-   
-// })

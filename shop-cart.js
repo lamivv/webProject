@@ -5,12 +5,11 @@ cartData = JSON.parse(localStorage.getItem('cartData'));
 // console.log(cartData);
 // console.log(localStorage.getItem('cartData'));
 
-
 // 상품가격의 총 합
 let cartPriceTotal = 0;
 // 상품갯수만큼 반복생성
 cartData.forEach(function (cartData) {
-  if (cartData != null) {
+  if (cartData != null && cartData.id==loginData[0].id) {
     // cartPriceTotal변수에 가격(할인 후 가격)*갯수를 더함
     cartPriceTotal += cartData.price * (100 - cartData.sale) / 100 * cartData.qyt;
     // console.log(cartPriceTotal);
@@ -102,7 +101,7 @@ document.querySelectorAll("span.inc").forEach(item => {
 // 장바구니에 담겨져 있는 상품종류의 갯수 (배열중 삭제된 null값은 제외)
 let cartnum = 0;
 for (let i = 0; i < cartData.length; i++) {
-  if (cartData[i] != null) {
+  if (cartData[i] != null && cartData[i].id==loginData[0].id) {
     cartnum++;
   }
 }
@@ -148,9 +147,9 @@ document.querySelectorAll("span.icon_close").forEach(item => {
 let tip_Bag_Length = document.querySelectorAll('.tip_bag');
 for (let i = 0; i < tip_Bag_Length.length; i++) {
   if(cartnum != 0){
-  tip_Bag_Length[i].innerHTML = cartnum;
+  tip_Bag_Length[i].innerHTML = cartnum; // 0개가 아니면 변경
   } else {
-    tip_Bag_Length[i].remove();
+    tip_Bag_Length[i].remove(); // 0개면 지우고ㅠ
   }
 }
 
